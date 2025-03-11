@@ -3,10 +3,18 @@ import sympy
 
 class BlumBlumShub:
     def __init__(self, length=4, iterations=20000):
-        self.p = self.generatePrimeNumber3Mod4(length=length)
-        self.q = self.generatePrimeNumber3Mod4(length=length, start=self.p + 1)
+        self.p = self.generatePrimeNumber3Mod4V2(length=length)
+        self.q = self.generatePrimeNumber3Mod4V2(length=length)
+        #self.p = self.generatePrimeNumber3Mod4(length=length)
+        #self.q = self.generatePrimeNumber3Mod4(length=length, start=self.p + 1)
         self.n = self.p * self.q
         self.iterations = iterations
+
+    def generatePrimeNumber3Mod4V2(self,length: int) -> int:
+        while True:
+            prime = sympy.randprime(10**(length - 1), 10**length)
+            if prime % 4 == 3:
+                return prime
 
     def generatePrimeNumber3Mod4(self,length: int, **kwargs) -> int:
         #start = kwargs.get("start", 10**(length - 1)) gets a good pair of primes for length = 4
