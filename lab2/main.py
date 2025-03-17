@@ -29,7 +29,7 @@ def test_dh():
     dh.run(4)
 
 def main():
-    #test_rsa()
+    test_rsa()
     test_dh()
 
 if __name__ == "__main__":

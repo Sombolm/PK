@@ -1,3 +1,4 @@
+import random
 import sympy as sp
 
 class Utils:
@@ -18,4 +19,4 @@ class Utils:
         return [chr(num) for num in number]
 
     def generateRandomStringOfLength(self, n):
-        return ''.join([chr(sp.randprime(65, 122)) for i in range(n)])
+        return ''.join([chr(random.randint(65, 122)) for i in range(n)])
