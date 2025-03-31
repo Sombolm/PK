@@ -27,9 +27,11 @@ class Tests:
             print("")
         if flag:
             print("All tests passed!")
+    #sprawdza czy liczba jedynek jest w odpowiednim przedziale
     def singleBitTest(self) -> bool:
         return 9654 < self.bits.count(1) < 10346
 
+    #sprawdza czy liczba serii jedynek i zer jest w odpowiednich przedziałach (mowi o losowosci)
     def seriesTest(self) -> bool:
         seriesOnesCount = defaultdict(int)
         seriesZeroesCount = defaultdict(int)
@@ -82,6 +84,7 @@ class Tests:
             return False
         return True
 
+    #sprawdza czy nie ma serii dluzszej niz 26
     def longSeriesTest(self) -> bool:
         prev = self.bits[0]
         seriesLength = 1
@@ -96,6 +99,8 @@ class Tests:
 
         return True
 
+    #sprawdza czy ciag bitow jest losowy na podstawie wystapienia poszczegolnych n bitowych serii
+    #sprawdza liczbe wystapien wszystkich mozliwych segmentow o danej dlugosci
     def pokerTest(self) -> bool:
         def splitBitsIntoGroups() -> list:
             return [self.bits[i:i + self.groupSize] for i in range(0, len(self.bits), self.groupSize)]

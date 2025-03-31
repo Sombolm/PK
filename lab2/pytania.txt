@@ -1,0 +1,14 @@
+1. Wybór dwóch liczb pierwszych. W rzeczywistych implementacjach nie powinny leżeć blisko siebie
+(bo wtedy obliczając pierwiastek z liczby n wiemy mniej więcej gdzie szukać p i q.
+
+2. Klucz publiczny e i Phi(n) nie mogą mieć wspólnych podzielników - tylko wtedy liczba e ma swoją ‚Odwrotność' w ciele modulo(phi(n)).
+3. Odwrotność w kryptografii liczby a, ze względu na operację mnożenia, to taka liczba x, która spełnia równanie:
+
+(a*x-1)modulo(phi(n)) =0, albo inaczej szukamy takiej liczby która powymnożeniu przez a i wykonaniu modulo phi(n) zwróci resztę 1 (czyli element neutralny dla mnożenia).
+
+4.
+I jeszcze jeden ważny warunek. Przy szyfrowaniu wiadomości m mamy: (m^e)mod(n)=c, m musi być <n - (dlaczego?)
+
+m musi być <n
+
+5. Bezpieczeństwo algorytmu DH polega na trudności wyznaczenia logarytmu dyskretnego, czyli wykładnika potęgi x, czyli dla g^x modulo p= A, nawet jeśli znamy wartość A.
