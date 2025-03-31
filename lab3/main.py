@@ -1,4 +1,5 @@
 import Solution
+from Sprawozdanie import runSprawozdanie
 
 def generateRandomStrings():
     import random
@@ -36,11 +37,15 @@ def main():
 
     #zad5
     testedString = "verylongstring".encode()
-    #print(solution.testCollision(testedString, 100000, solution.generateMD5))
+    print(solution.testCollision(testedString, 100000, solution.generateMD5, 3))
 
     #zad6
     testedString = "verylongstring".encode()
     print(solution.testSAC(testedString, solution.generateMD5, 1))
+
+
+
+
 
 
 if __name__ == "__main__":

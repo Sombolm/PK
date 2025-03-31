@@ -11,17 +11,18 @@ class Solution:
         self.functionNames = [self.generateMD5, self.generateSHA1, self.generateSHA2, self.generateSHA3]
         self.utils = Utils.Utils()
 
-    def generateAll(self,text: str):
+    def generateAll(self,text: str, fileSize: str):
         res = dict()
         keys = self.keys
         functionNames = self.functionNames
         times = dict()
 
+
         for idx, functionName in enumerate(functionNames):
             start = time.time_ns()
             res[keys[idx]]= functionName(text.encode())
             end = time.time_ns()
-            times[keys[idx]] = end - start
+            times[(keys[idx], fileSize, functionName.__name__)] = end - start
 
         return res, times
 
@@ -40,14 +41,14 @@ class Solution:
     def generateSHA3(self, text) -> str:
         return hashlib.sha384(text).hexdigest()
 
-    def testCollision(self, encodedText, numberOfTests,functionName):
+    def testCollision(self, encodedText, numberOfTests,functionName, numberOfTestingBytes):
         textLen = len(encodedText)
         numberOfCollisions = 0
-        testingHash = functionName(encodedText)[:3]
+        testingHash = functionName(encodedText)[:numberOfTestingBytes]
 
-        for i in range(1, numberOfTests):
+        for i in range(1, numberOfTests + 1):
             randomString = self.utils.generateRandomStringOfLength(textLen).encode()
-            if testingHash == functionName(randomString)[:3]:
+            if testingHash == functionName(randomString)[:numberOfTestingBytes]:
                 numberOfCollisions += 1
         return numberOfCollisions
 
