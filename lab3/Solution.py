@@ -31,15 +31,27 @@ class Solution:
     def generateMD5(self,text) -> str:
         return hashlib.md5(text).hexdigest()
 
+    def generateMD5Digest(self,text):
+        return hashlib.md5(text).digest()
+
     
     def generateSHA1(self, text) -> str:
         return hashlib.sha1(text).hexdigest()
 
+    def generateSHA1Digest(self, text):
+        return hashlib.sha1(text).digest()
+
     def generateSHA2(self, text) -> str:
         return hashlib.sha256(text).hexdigest()
 
+    def generateSHA2Digest(self, text):
+        return hashlib.sha256(text).digest()
+
     def generateSHA3(self, text) -> str:
         return hashlib.sha384(text).hexdigest()
+
+    def generateSHA3Digest(self, text):
+        return hashlib.sha384(text).digest()
 
     def testCollision(self, encodedText, numberOfTests,functionName, numberOfTestingBytes):
         textLen = len(encodedText)
@@ -48,8 +60,13 @@ class Solution:
 
         for i in range(1, numberOfTests + 1):
             randomString = self.utils.generateRandomStringOfLength(textLen).encode()
-            if testingHash == functionName(randomString)[:numberOfTestingBytes]:
+            randomHash = functionName(randomString)[:numberOfTestingBytes]
+
+            xor_result = bytes(a ^ b for a, b in zip(testingHash, randomHash))
+
+            if xor_result == b'\x00' * numberOfTestingBytes:
                 numberOfCollisions += 1
+
         return numberOfCollisions
 
     def countBits(self,byteSeq):
@@ -71,20 +88,22 @@ class Solution:
     def testSAC(self, encodedText, functionName, iterations):
         originalText = encodedText
         originalHash = functionName(originalText)
-        textLen = len(encodedText)
 
         probabilities = dict()
 
         for i in range(iterations):
 
-            randomPosition = random.randint(0, textLen-1)
             encodedTextArray = bytearray(encodedText)
-            encodedTextArray[randomPosition] = encodedTextArray[randomPosition] ^ 1
+
+            randomPosition = random.randint(0, len(encodedTextArray) - 1)
+            randomBitIndex = random.randint(0, 7)
+
+            encodedTextArray[randomPosition] ^= (1 << randomBitIndex)
 
             newText = bytes(encodedTextArray)
             newHash = functionName(newText)
 
-            changeProbability = self.bitChangeProbability(bytes(originalHash.encode()), bytes(newHash.encode()))
+            changeProbability = self.bitChangeProbability(bytes(originalHash), bytes(newHash))
 
             probabilities[i] = changeProbability
 

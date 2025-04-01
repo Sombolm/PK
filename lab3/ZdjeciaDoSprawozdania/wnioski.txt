@@ -1,0 +1,7 @@
+1. Czas wykonywania funkcji haszujacych rosnie wraz z iloscia danych wejsciowych, relacja ta jest liniowa.
+2. Funkcje haszujace sa szybkie, ale nie sa idealne, poniewaz moga powodowac kolizje. Jest to malo prawdopodobne, ale zdarza sie.
+3. Do badania SAC o wielkosci 150MB.
+5. Przy badaniu kolizji dla "k"
+6. Do testu SAC wykorzystalem SHA3-384, a do testu kolizji wykorzystalem MD5 przy 1000 iteracjach.
+4. Wszystkie funkcje haszujace maja zlozonosc obliczeniowa O(n), gdzie n to ilosc danych wejsciowych.
+5. Wszystkie funkcje haszujace maja zlozonosc pamieciowa O(n), gdzie n to ilosc danych wejsciowych.

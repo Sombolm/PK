@@ -99,12 +99,17 @@ def plotTimes(times_list: list[dict]):
 
 def runSprawozdanie():
     solution = Solution.Solution()
-
-    sizes = [1,2,3]
+    '''
+    sizes = [150,200,250]
     fileNames = generateFilesOfSizes(sizes)
-
-
+    
+    print(fileNames)
+    for fileNames in fileNames:
+        print(fileNames)
+    print("Files generated")
+    
     #zad1
+    
     timeList = []
     for fileName in fileNames:
         file = open(fileName, "r")
@@ -114,24 +119,25 @@ def runSprawozdanie():
         printLine()
 
     plotTimes(timeList)
-
+    
     smallText = loadFile(str(sizes[0]) + ".txt")
+    
 
     #zad2
-    print('SAC for small text asdjasdioazxcnmzxcnkjlwapiaweipjasdlkzxcnm,xzcjioawsp9qwrlknrwalnkfasnlkfasjipavpoasxvopasowfnrqwnlwfaklafsjoasopgpjohep[jiehwni[wgaenokagswnljkagswawsgnojkoawirjwiqrjrop[qw=]askmlcnjsdbjidrfbhuiefawd')
-    res = solution.testSAC(smallText.encode(), solution.generateSHA3, 1)
+    print('SAC for small text')
+    res = solution.testSAC(smallText.encode(), solution.generateSHA3Digest, 1)
     print('Bits changed with probability: ', res[0])
-
+    '''
+    smallText = "ko"
     #zad3
     print("Collision test for small text")
-    smallText = 'koteczek'
-    res = solution.testCollision(smallText.encode(), 1000 , solution.generateMD5, 2)
+    res = solution.testCollision(smallText.encode(), 1000 , solution.generateMD5Digest, 2)
     print('Number of collisions in first 16 bits: ', res)
     printLine()
-    res =solution.testCollision(smallText.encode(), 1000, solution.generateMD5, 3)
+    res =solution.testCollision(smallText.encode(), 1000, solution.generateMD5Digest, 3)
     print('Number of collisions in first 24 bits: ', res)
     printLine()
-    res =solution.testCollision(smallText.encode(), 1000, solution.generateMD5, 4)
+    res =solution.testCollision(smallText.encode(), 1000, solution.generateMD5Digest, 4)
     print('Number of collisions in first 32 bits: ', res)
     printLine()
 
