@@ -62,23 +62,23 @@ class Solution:
             randomString = self.utils.generateRandomStringOfLength(textLen).encode()
             randomHash = functionName(randomString)[:numberOfTestingBytes]
 
-            xor_result = bytes(a ^ b for a, b in zip(testingHash, randomHash))
+            xorResult = bytes(a ^ b for a, b in zip(testingHash, randomHash))
 
-            if xor_result == b'\x00' * numberOfTestingBytes:
+            if xorResult == b'\x00' * numberOfTestingBytes:
                 numberOfCollisions += 1
 
         return numberOfCollisions
 
     def countBits(self,byteSeq):
-        binary_representation = ''.join(bin(byte)[2:].zfill(8) for byte in byteSeq)
-        numOnes = binary_representation.count('1')
-        numZeros = binary_representation.count('0')
+        binaryRepresentation = ''.join(bin(byte)[2:].zfill(8) for byte in byteSeq)
+        numOnes = binaryRepresentation.count('1')
+        numZeros = binaryRepresentation.count('0')
         return numZeros, numOnes
 
     def bitChangeProbability(self,originalHash, newHash):
-        xor_result = bytes(a ^ b for a, b in zip(originalHash, newHash))
+        xorResult = bytes(a ^ b for a, b in zip(originalHash, newHash))
 
-        _, changedBits = self.countBits(xor_result)
+        _, changedBits = self.countBits(xorResult)
 
         totalBits = len(originalHash) * 8
         changeProbability = changedBits / totalBits
