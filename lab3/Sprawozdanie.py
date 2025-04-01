@@ -100,7 +100,7 @@ def plotTimes(times_list: list[dict]):
 def runSprawozdanie():
     solution = Solution.Solution()
 
-    sizes = [20,60,120]
+    sizes = [1,2,3]
     fileNames = generateFilesOfSizes(sizes)
 
 
@@ -118,7 +118,7 @@ def runSprawozdanie():
     smallText = loadFile(str(sizes[0]) + ".txt")
 
     #zad2
-    print('SAC for small text')
+    print('SAC for small text asdjasdioazxcnmzxcnkjlwapiaweipjasdlkzxcnm,xzcjioawsp9qwrlknrwalnkfasnlkfasjipavpoasxvopasowfnrqwnlwfaklafsjoasopgpjohep[jiehwni[wgaenokagswnljkagswawsgnojkoawirjwiqrjrop[qw=]askmlcnjsdbjidrfbhuiefawd')
     res = solution.testSAC(smallText.encode(), solution.generateSHA3, 1)
     print('Bits changed with probability: ', res[0])
 
