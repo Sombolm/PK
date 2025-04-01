@@ -100,7 +100,7 @@ def plotTimes(times_list: list[dict]):
 def runSprawozdanie():
     solution = Solution.Solution()
 
-    sizes = [2,6,12]
+    sizes = [20,60,120]
     fileNames = generateFilesOfSizes(sizes)
 
 
