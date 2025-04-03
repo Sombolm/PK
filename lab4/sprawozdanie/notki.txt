@@ -1,0 +1,9 @@
+Do zdjecia:
+
+1. Testy zostały przeprowadzone na plikach o rozmiarach 10, 15, 20MB
+2. Czasy to średnia z 40 iteracji, nonce dla ctr oraz iv dla cbc były takie same na przestrzeni wszystkich iteracji
+
+Do bledow:
+40 iteracji, za kazdym razem tworzona nowa losowa wiadomosc, ten sam nonce i iv
+
+
