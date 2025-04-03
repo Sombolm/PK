@@ -1,0 +1,19 @@
+1. Robimy dla trzech trybow pracy, ECB,
+CBC,
+CTR (tryb licznikowy, liczba noonce warunek bezpieczenstwa trybu), ten tryb do rownoleglego prztwarzania
+jest szybki, jesli cos pojdzie nie tak to powtarzamy tylko dany fragment
+dla wybranej funkcji
+3 pliki - sprawdzamy czas szyfrowania i deszyfrowania mozna porownac SZB do FS dla tych trzech trybow
+
+2.Propagacja bledu przy szyfrowaniu i deszyfrowaniu czy
+sie propaguje ile blokow uszkodzonych dla kazdego trybu
+
+sa dwa przypadki, mamy wiadomosc, obliczamy jej szyfrogram, uszkadzamy bit w wiadomosci, szyfrujemy
+i porownujemy szyfrogramy robimy to dla wszystkich trybow
+
+drugi przypadek mamy szyfrogram, odszyfrowujemy ja uszkadzamy bit w szyfrogramie i sprawdzamy odszyfrowana wiadomosc
+
+niech wiadomosci skladaja sie z kilku blokow np string 50 znakow da rade
+
+3. Implementacja trybu CBC za pomoca trybu ECB(gotowej) sami robimy sprzezenie zwrotne
+jesli ostatni blok nie ma pelnej dlugosci bloku to jest dopelniany paddingiem

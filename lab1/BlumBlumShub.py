@@ -39,7 +39,7 @@ class BlumBlumShub:
         bits = []
         for _ in range(self.iterations):
             x = pow(x, 2, self.n)
-            bits.append(x & 1)
+            bits.append(x & 1) #LSB
         print("Generated", len(bits), "bits")
         print("First 10 bits:", bits[:10])
         return bits

@@ -1,4 +1,6 @@
 import random
+import string
+
 import sympy as sp
 
 class Utils:
@@ -20,3 +22,16 @@ class Utils:
 
     def generateRandomStringOfLength(self, n):
         return ''.join([chr(random.randint(65, 122)) for i in range(n)])
+
+    def loadFile(fileName: str):
+        with open(fileName, "r") as f:
+            return f.read()
+
+    def generateRandomFileOfSizeInMB(size: int):
+        size_in_bytes = size * 1024 * 1024
+        content = ''.join(random.choices(string.ascii_letters + string.digits, k=size_in_bytes))
+        with open(str(size) + ".txt", 'w') as f:
+            f.write(content)
+
+        f.close()
+        return str(size) + ".txt"
