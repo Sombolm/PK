@@ -4,12 +4,12 @@ from PIL import Image
 
 class VisualSecret:
     def __init__(self):
-        self.blackPatterns = [
+        self.whitePatterns = [
                 (0, 255, 0, 255),
                 (255,0, 255, 0),
         ]
 
-        self.whitePatterns = [
+        self.blackPatterns = [
                 (0, 255, 255, 0),
                 (255, 0, 0, 255),
         ]
